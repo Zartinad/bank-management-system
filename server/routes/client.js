@@ -16,33 +16,23 @@ module.exports = {
       let query_customer = "INSERT INTO customers(first_name, last_name)" +
       "VALUES ('" + first_name + "','" + last_name + "');";
 
-
       db2.query(query_customer, (err, result) => {
         if (err){
           return res.status(500).send(err);
         }
         console.log("Successfully Added Customer");
 
-      });
-
-      db2.query("SELECT LAST_INSERT_ID()", (err, result) => {
-        if (err){
-          return res.status(500).send(err);
-        }
-        console.log(result);
-        console.log(result.LAST_INSERT_ID());
         let query_account = "INSERT INTO accounts(account_holder,branch,amount_borrowed)"+
-        "VALUES ('" + result + "," + branch + "," + 1000 + ");";
+        "VALUES (" + result.insertId + "," + branch + "," + 1000 + ");";
 
-        db2.query(query_account, (err, result) => {
+        db2.query(query_account, (err, result2) => {
           if (err){
             return res.status(500).send(err);
           }
-        })
-        console.log("Successfully binded account with customer");
-        res.redirect();
-      })
-
+          console.log("Successfully binded");
+          res.redirect('/');
+        });
+      });
     },
     addTransactionPage: (req, res) => {
       res.render('add-transaction.ejs', {

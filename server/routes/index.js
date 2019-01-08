@@ -17,20 +17,20 @@ module.exports = {
             if (err) {
                 res.redirect('/');
             }
-            res.render('index.ejs', {
-                title: "Welcome to Socka | View Players",
-                customers: result2
+
+            console.log(result2);
+            console.log(result2[0].id);
+            db2.query(transaction_query, (err, result) => {
+                if (err) {
+                    res.redirect('/');
+                }
+                res.render('index.ejs', {
+                    title: "Welcome to Socka | View Players",
+                    transactions: result,
+                    customers: result2
+                });
             });
         });
 
-        // db2.query(transaction_query, (err, result) => {
-        //     if (err) {
-        //         res.redirect('/');
-        //     }
-        //     res.render('index.ejs', {
-        //         title: "Welcome to Socka | View Players",
-        //         transactions: result
-        //     });
-        // });
     },
 };

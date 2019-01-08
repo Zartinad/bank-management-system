@@ -1,5 +1,37 @@
 <% include partials/header.ejs %>
 <% include partials/customers_tables.ejs%>
+    <div class="table-wrapper">
+        <% if (transactions.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Transaction Number</th>
+                        <th scope="col">Date Time</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Account</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% transactions.forEach((transc, index) => { %>
+                        <tr>
+                            <th scope="row"><%= transc.transaction_id %></th>
+                            <td><%= transc.date_time %></td>
+                            <td><%= transc.branch %></td>
+                            <td><%= transc.account %></td>
+                            <td><%= transc.amount %></td>
+                            <td>
+                                <a href="/edit/<%= player.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">View</a>
+                                <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No transactions found. Go <a href="/add" >here</a> to add players.</p>
+        <% } %>
+    </div>
 </div>
 </body>
 </html>
