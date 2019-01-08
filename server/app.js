@@ -7,6 +7,7 @@ const app = express();
 
 const {getHomePage} = require('./routes/index');
 const {addPlayerPage, addPlayer, deletePlayer, editPlayer, editPlayerPage} = require('./routes/player');
+const {addClientPage, addClient} = require('./routes/client');
 const port = 5000;
 
 // create connection to database
@@ -26,6 +27,22 @@ db.connect((err) => {
 });
 
 global.db = db;
+ // global data 2
+const db2 = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'Sep121998',
+  database: 'bmt'
+});
+
+db2.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Connected to database2');
+});
+
+global.db2 = db2;
 
 
 // configure middleware
@@ -45,6 +62,8 @@ app.get('/delete/:id', deletePlayer);
 app.post('/add', addPlayer);
 app.post('/edit/:id', editPlayer);
 
+app.get('/add2', addClientPage);
+app.post('/add2', addClient);
 
 // set the app to listen on the port
 app.listen(port, () => {
