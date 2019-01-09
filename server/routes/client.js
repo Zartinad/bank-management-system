@@ -43,8 +43,11 @@ module.exports = {
     addTransaction: (req, res) => {
       let account_number = req.body.account_number;
       let amount = req.body.amount;
+      console.log(branch);
+      console.log(account_number);
+      console.log(amount);
 
-      let query_account = "SELECT * FROM `accounts` WHERE acount_number = '" + account_number + "'";
+      let query_account = "SELECT * FROM accounts WHERE account_number = '" + account_number + "';";
 
       db2.query(query_account, (err,result) => {
         if (err) {
@@ -58,8 +61,8 @@ module.exports = {
           });
 
         } else {
-          let query = "INSERT INTO `transactions` (date_time, branch, account, amount)" +
-          "VALUES" + "(CURRENT_TIMESTAMP, " + branch + "," + account_number + "," + amount + ");";
+          let query = "INSERT INTO `transactions` (branch, account, amount)" +
+          "VALUES" + "(" + branch + "," + account_number + "," + amount + ");";
 
           db2.query(query, (err, result) => {
             if (err){

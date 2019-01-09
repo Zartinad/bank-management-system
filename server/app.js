@@ -71,6 +71,7 @@ app.get('/addClient', addClientPage);
 app.post('/addClient', addClient);
 
 app.get('/addTransaction', addTransactionPage);
+app.post('/addTransaction', addTransaction);
 
 // set the app to listen on the port
 app.listen(port, () => {

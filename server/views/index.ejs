@@ -21,8 +21,8 @@
                             <td><%= transc.account %></td>
                             <td><%= transc.amount %></td>
                             <td>
-                                <a href="/edit/<%= player.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">View</a>
-                                <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="/edit/<%= transc.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">View</a>
+                                <a href="/delete/<%= transc.id %>" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                     <% }) %>
