@@ -15,7 +15,7 @@ const port = 5000;
 // const db = mysql.createConnection ({
 //     host: 'localhost',
 //     user: 'root',
-//     password: 'Sep121998',
+//     password: '',
 //     database: 'socka'
 // });
 //
@@ -31,7 +31,7 @@ const port = 5000;
 const db2 = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Sep121998',
+  password: '',
   database: 'bmt'
 });
 
